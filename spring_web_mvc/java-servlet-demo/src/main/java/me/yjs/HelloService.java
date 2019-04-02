@@ -3,9 +3,9 @@ package me.yjs;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HelloService {
+class HelloService {
 
-    public String getName(){
+    String getName(){
         return "yjsWeb";
     }
 }
