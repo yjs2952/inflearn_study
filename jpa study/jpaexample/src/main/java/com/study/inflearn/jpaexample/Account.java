@@ -3,9 +3,8 @@ package com.study.inflearn.jpaexample;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter @Setter
@@ -17,4 +16,7 @@ public class Account {
     private String username;
 
     private String password;
+
+    @OneToMany
+    private Set<Study> studies;
 }
