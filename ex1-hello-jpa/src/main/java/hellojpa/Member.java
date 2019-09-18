@@ -11,13 +11,7 @@ public class Member {
 
     private String name;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String age;
 
     public String getName() {
         return name;
