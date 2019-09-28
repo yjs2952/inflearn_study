@@ -42,7 +42,7 @@ public class MeetingRoom {
         Interval in2 = new Interval(5, 10);
         Interval in3 = new Interval(0, 3);
 
-        Interval[] intervals = {};
+        Interval[] intervals = {in1, in2, in3};
         System.out.println(a.solve(intervals));
     }
 
