@@ -13,14 +13,18 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //Member findMember = em.find(Member.class, 1L);
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(10)
-                    .getResultList();
-            for (Member member : result) {
-                System.out.println("name : " + member.getName());
-            }
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
+            em.persist(member);
+
+            Team team1 = member.getTeam();
+            System.out.println("findTeam : " + team1.getName());
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
