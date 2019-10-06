@@ -3,40 +3,32 @@ package string_array;
 import java.util.Arrays;
 import java.util.Comparator;
 
-class Interval {
-    private int start;
-    private int end;
+public class _01_MeetingRoom {
 
-    Interval() {
-        this.start = 0;
-        this.end = 0;
+    static class Interval {
+        private int start;
+        private int end;
+
+        Interval() {
+            this.start = 0;
+            this.end = 0;
+        }
+
+        Interval(int s, int e) {
+            this.start = s;
+            this.end = e;
+        }
+
+        int getStart() {
+            return start;
+        }
+
+        int getEnd() {
+            return end;
+        }
     }
 
-    Interval(int s, int e) {
-        this.start = s;
-        this.end = e;
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public void setStart(int start) {
-        this.start = start;
-    }
-
-    public int getEnd() {
-        return end;
-    }
-
-    public void setEnd(int end) {
-        this.end = end;
-    }
-}
-
-public class MeetingRoom {
     public static void main(String[] args) {
-        //MeetingRoom a = new MeetingRoom();
 
         Interval in1 = new Interval(15, 20);
         Interval in2 = new Interval(5, 10);

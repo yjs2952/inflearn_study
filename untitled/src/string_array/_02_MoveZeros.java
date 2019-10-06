@@ -2,7 +2,7 @@ package string_array;
 
 import java.util.Arrays;
 
-public class MoveZeros {
+public class _02_MoveZeros {
 
     private static void solution(int[] input){
         int index = 0;
