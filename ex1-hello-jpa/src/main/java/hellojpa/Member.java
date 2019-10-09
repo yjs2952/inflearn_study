@@ -6,9 +6,10 @@ import javax.persistence.*;
 public class Member {
 
     @Id @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "USERNAME")
     private String username;
 
     @ManyToOne
@@ -21,6 +22,11 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);        // 편의성 메소드
     }
 
     public Long getId() {
