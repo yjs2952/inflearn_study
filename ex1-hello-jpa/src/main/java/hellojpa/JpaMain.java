@@ -1,5 +1,7 @@
 package hellojpa;
 
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,31 +16,34 @@ public class JpaMain {
 
         try {
 
+            Member member1 = new Member();
+            member1.setUsername("member1");
+            em.persist(member1);
+
             Team team = new Team();
-            team.setName("TeamA");
-//
+            team.setName("team1");
             em.persist(team);
 
-            Member member = new Member();
-            member.setUsername("member2");
-//            member.changeTeam(team);
-            em.persist(member);
-
-            team.addMember(member);
+            member1.setTeam(team);
 
             em.flush();
             em.clear();
 
-            Team findTema = em.find(Team.class, team.getId());  // 1차 캐시
-            List<Member> members = findTema.getMembers();
+            //Member m1 = em.getReference(Member.class, member1.getId());
+            //System.out.println("m1 = " + m1.getClass());
 
-            for (Member m : members) {
-                System.out.println("m = " + m.getUsername());
-            }
+            Member m = em.find(Member.class, member1.getId());
+            System.out.println("m = " + m.getClass());
+
+            System.out.println("team : " + m.getTeam().getClass());
+            System.out.println("====================");
+
+            m.getTeam().getName();
 
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
+            e.printStackTrace();
         } finally {
             em.close();
         }
