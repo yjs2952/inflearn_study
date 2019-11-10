@@ -12,6 +12,8 @@ public class Member {
     @Column(name = "USERNAME")
     private String username;
 
+    private int age;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
@@ -27,6 +29,14 @@ public class Member {
     public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);        // 편의성 메소드
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Long getId() {

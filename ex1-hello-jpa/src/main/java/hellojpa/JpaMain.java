@@ -18,27 +18,18 @@ public class JpaMain {
 
             Member member1 = new Member();
             member1.setUsername("member1");
+            member1.setAge(10);
             em.persist(member1);
 
-            Team team = new Team();
-            team.setName("team1");
-            em.persist(team);
+            List<Member> resultList = em.createQuery("select m from Member m where m.username = :username", Member.class)
+                    .setParameter("username", "member1")
+                    .getResultList();
 
-            member1.setTeam(team);
-
-            em.flush();
-            em.clear();
+            //em.flush();
+            //em.clear();
 
             //Member m1 = em.getReference(Member.class, member1.getId());
             //System.out.println("m1 = " + m1.getClass());
-
-            Member m = em.find(Member.class, member1.getId());
-            System.out.println("m = " + m.getClass());
-
-            System.out.println("team : " + m.getTeam().getClass());
-            System.out.println("====================");
-
-            m.getTeam().getName();
 
             tx.commit();
         } catch (Exception e) {
