@@ -16,12 +16,16 @@ public class JpaMain {
 
         try {
 
-            for (int i = 0; i < 100; i++) {
-                Member member1 = new Member();
-                member1.setUsername("member" + i);
-                member1.setAge(i);
-                em.persist(member1);
-            }
+            Team team = new Team();
+            team.setName("team1");
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername("teamA");
+            member1.setAge(10);
+            member1.setTeam(team);
+            member1.setType(MemberType.ADMIN);
+            em.persist(member1);
 
             em.flush();
             em.clear();
@@ -55,16 +59,19 @@ public class JpaMain {
             System.out.println("memberDTO = " + memberDTO.getUsername());
             System.out.println("memberDTO = " + memberDTO.getAge());*/
 
-            List<Member> resultList1 = em.createQuery("select m from Member m order by m.age desc", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(10)
+            String query = "select m.username, 'Hello', true  from Member m " +
+                    "where m.type = :userType";
+
+            List<Object[]> resultList1 = em.createQuery(query)
+                    .setParameter("userType", MemberType.ADMIN)
                     .getResultList();
 
-            System.out.println("result size : " + resultList1.size());
-
-            for (Member m : resultList1) {
-                System.out.println("member1 = " + m);
+            for (Object[] objects : resultList1) {
+                System.out.println("objects = " + objects[0]);
+                System.out.println("objects = " + objects[1]);
+                System.out.println("objects = " + objects[2]);
             }
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
