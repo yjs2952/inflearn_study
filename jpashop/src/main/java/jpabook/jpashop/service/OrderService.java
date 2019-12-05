@@ -42,4 +42,15 @@ public class OrderService {
 
         return order.getId();
     }
+
+    // 취소
+    public void cancelOrder(Long orderId){
+        // 주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+
+        // 주문 취소
+        order.cancel();
+    }
+
+    // 검색
 }
