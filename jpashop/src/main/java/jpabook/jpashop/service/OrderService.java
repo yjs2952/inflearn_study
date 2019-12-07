@@ -38,7 +38,8 @@ public class OrderService {
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
 
         // 주문 생성
-        Order order = Order.createOrder(member, delivery, orderItem);
+        Order order = Order.createOrder(member, delivery, orderItem);   // 엔티티에 비지니스 로직을 넣는 것을 도메인 모델 패턴이라고 한다.
+                                                                        // 일반적으로 서비스에 비지니스 로직을 넣는 것을 트랜잭션 스크립트 패턴 이라고 한다.
 
         // 주문 저장
         orderRepository.save(order);
