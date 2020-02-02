@@ -18,7 +18,7 @@ public class Category {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany // 운영에선 쓰면 안됨
     @JoinTable(name = "category_item",
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
