@@ -3,7 +3,6 @@ package jpabook.jpashop.domain;
 import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
-import org.omg.CORBA.portable.Delegate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
