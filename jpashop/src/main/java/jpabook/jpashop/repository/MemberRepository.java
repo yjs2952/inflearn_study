@@ -11,8 +11,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberRepository {
 
-    //@PersistenceContext           // 원래는 엔티티 매니저를 주입받기 위해선 이 어노테이션을 써야한다. 그러나 스프링부트에서는 @Autowired 로 주입이 가능하다.
-    private final EntityManager em; // @Autowired 로 주입 가능한 빈만 이런식으로 생략이 가능하다.
+//    @PersistenceContext   // 스프링부트의 스프링 데이터 jpa 를 쓰면 @Autowired 로 대체할 수 있다.
+//    @Autowired
+    private final EntityManager em;
+
+//    public MemberRepository(EntityManager em) {
+//        this.em = em;
+//    }
+
+    //    @PersistenceUnit
+//    private EntityManagerFactory emf;
 
     public void save(Member member) {
         em.persist(member);
@@ -22,13 +30,13 @@ public class MemberRepository {
         return em.find(Member.class, id);
     }
 
-    public List<Member> findAll() {
+    public List<Member> findAll(){
         return em.createQuery("select m from Member m", Member.class)
                 .getResultList();
     }
 
-    public List<Member> findByName(String name) {
-        return em.createQuery("select m from Member m where m.name= :name", Member.class)
+    public List<Member> findMember(String name) {
+        return em.createQuery("select m from Member m where m.name = :name", Member.class)
                 .setParameter("name", name)
                 .getResultList();
     }
