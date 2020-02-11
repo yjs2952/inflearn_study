@@ -1,12 +1,13 @@
 package jpabook.jpashop.domain.item;
 
 public class NotEnoughStockException extends RuntimeException {
+
     public NotEnoughStockException() {
         super();
     }
 
-    public NotEnoughStockException(String need_more_stock) {
-
+    public NotEnoughStockException(String message) {
+        super(message);
     }
 
     public NotEnoughStockException(String message, Throwable cause) {

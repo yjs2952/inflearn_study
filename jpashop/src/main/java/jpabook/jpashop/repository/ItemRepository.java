@@ -17,7 +17,7 @@ public class ItemRepository {
         if (item.getId() == null) {
             em.persist(item);
         } else {
-            em.merge(item); // update 와 유사
+            em.merge(item); // 이미 있는 entity 를 업데이트(와 비슷)
         }
     }
 
@@ -25,7 +25,8 @@ public class ItemRepository {
         return em.find(Item.class, id);
     }
 
-    public List<Item> findAll() {
+    public List<Item> findAll(){
         return em.createQuery("select i from Item i", Item.class).getResultList();
     }
+
 }
