@@ -1,6 +1,9 @@
 package jpabook.jpashop.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,7 +17,7 @@ import java.util.List;
 public class Order {
 
     @Id
-    @Generated
+    @GeneratedValue
     @Column(name = "order_id")
     private Long id;
 

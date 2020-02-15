@@ -15,9 +15,9 @@ logging:
     org.hibernate:
       SQL: debug
       type: trace
-decorator:
-  datasource:
-    p6spy:
-      multiline: false
-      logging: slf4j
-      enable-logging: false
+#decorator:
+#  datasource:
+#    p6spy:
+#      multiline: false
+#      logging: slf4j
+#      enable-logging: false
