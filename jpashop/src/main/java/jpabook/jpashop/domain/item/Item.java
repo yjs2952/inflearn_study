@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jpabook.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public abstract class Item {
 
     private int stockQuantity;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
